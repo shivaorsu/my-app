@@ -4,10 +4,19 @@ import './NewExpense.css';
 
 
 
-const NewExpense = ()=>{
-    return <div className="new-expense">
-        <ExpenseFrom/>
 
-    </div>
+const NewExpense = (props)=>{
+    const saveExpanseDataHandler=(enteredExpenseDate)=>{
+        const expenseData ={
+            ...enteredExpenseDate,
+            id:Math.random().toString()
+        };
+        props.onAddExpense(expenseData);
+    }
+    return (
+        <div className="new-expense">
+         <ExpenseFrom onSaveExpenseData={saveExpanseDataHandler}/>
+        </div>
+    );
 };
 export default NewExpense;
